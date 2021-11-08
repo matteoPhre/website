@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ThemeService {
 
-    private themelistURL = "https://raw.githubusercontent.com/wannabemrrobot/daily-progress/main/themelist.json";
+    //private themelistURL = "https://raw.githubusercontent.com/wannabemrrobot/daily-progress/main/themelist.json";
 
     themeList: any = {};
     // private __themeUpdated:BehaviorSubject<string> = new BehaviorSubject("#ff1e56");

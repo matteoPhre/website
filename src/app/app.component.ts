@@ -12,7 +12,7 @@ import { ThemeService } from './service/theme.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  title = 'wannabemrrobot';
+  title = 'wannabeme';
 
   breadcrumb_placeholder!: String;
   ValidPostNumbers: any = [];
