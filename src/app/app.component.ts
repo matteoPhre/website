@@ -181,34 +181,34 @@ export class AppComponent implements OnInit {
       this.lastThemeSelection = 'Zen White';
     }
 
-    // this.__themeService.getThemeList().subscribe((themelist: any) => {
-    //   // iterate through the themelist for url to fetch attributes
-    //   this.__themeService.getThemeConfigs(themelist).subscribe((observableList: any) => {
+    this.__themeService.getThemeList().subscribe((themelist: any) => {
+      // iterate through the themelist for url to fetch attributes
+      this.__themeService.getThemeConfigs(themelist).subscribe((observableList: any) => {
 
-    //     this.themeObjList = observableList;
+        this.themeObjList = observableList;
 
-    //     // INITIATING THEME SWITCHING TASK
-    //     let userThemePreference = "Dark Knight";
-    //     // check localStorage for existing theme attributes
-    //     if (userThemePreference != null || userThemePreference != undefined || userThemePreference == '') {
-    //       this.__themeService.setTheme(userThemePreference, this.themeObjList);
-    //       this.lastThemeSelection = userThemePreference;
-    //     } else {
-    //       // set the default themes based on browser themes
-    //       let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    //       if (darkMode) {
-    //         this.__themeService.setTheme('Dark Knight', this.defaultThemes);
-    //         this.lastThemeSelection = 'Dark Knight';
-    //       } else {
-    //         this.__themeService.setTheme('Zen White', this.defaultThemes);
-    //         this.lastThemeSelection = 'Zen White';
-    //       }
-    //     }
-    //   })
+        // INITIATING THEME SWITCHING TASK
+        let userThemePreference = "Dark Knight";
+        // check localStorage for existing theme attributes
+        if (userThemePreference != null || userThemePreference != undefined || userThemePreference == '') {
+          this.__themeService.setTheme(userThemePreference, this.themeObjList);
+          this.lastThemeSelection = userThemePreference;
+        } else {
+          // set the default themes based on browser themes
+          let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (darkMode) {
+            this.__themeService.setTheme('Dark Knight', this.defaultThemes);
+            this.lastThemeSelection = 'Dark Knight';
+          } else {
+            this.__themeService.setTheme('Zen White', this.defaultThemes);
+            this.lastThemeSelection = 'Zen White';
+          }
+        }
+      })
 
-    //   for (let theme of themelist) {
-    //     this.themeNames.push(theme.theme)
-    //   }
-    // })
+      for (let theme of themelist) {
+        this.themeNames.push(theme.theme)
+      }
+    })
   }
 }
