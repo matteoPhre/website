@@ -40,6 +40,23 @@ export class ThemeService {
         )
     }
 
+    getStoredTheme() {
+        let _theme = localStorage.getItem('@theme');
+        let _themeAccent = localStorage.getItem('@themeAccent')
+
+        let _themeAttrs = localStorage.getItem('@themeAttributes');
+        let _themeAttrsParsed;
+        if (_themeAttrs != null) {
+            _themeAttrsParsed = JSON.parse(_themeAttrs);
+        }
+
+        return {
+            _theme,
+            _themeAccent,
+            _themeAttrsParsed
+        }
+    }
+
     setTheme(name: string, themeObjList: any) {
 
         let fallBack = false;
@@ -56,7 +73,7 @@ export class ThemeService {
                 // setting localstorage items for app level access
                 localStorage.setItem('@theme', theme.$theme)
                 localStorage.setItem('@themeAccent', theme['--accent-primary'])
-                localStorage.setItem('@themeAttributes', theme)
+                localStorage.setItem('@themeAttributes', JSON.stringify(theme))
                 this.__themeUpdated.next(theme['--accent-primary']);
 
                 fallBack = false;

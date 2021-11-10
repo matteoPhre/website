@@ -1,0 +1,40 @@
+<div class="page404__container">
+    <div class="page404__header">
+        <div class="page404__header__text"></div>
+    </div>
+    <div class="page404__body">
+        <div class="page404__body__scrambler">
+            <div class="page404__body__scrambler__heading"
+                (mouseover)="animateOnHover(['LOST?'], '.page404__body__scrambler__heading', '!<>-_\\/[]{}—=+*^?#__')">
+                LOST?</div>
+            <div class="page404__body__scrambler__text"></div>
+        </div>
+
+        <div class="page404__body__navigate">
+            <div class="page404__body__navigate__cells" [routerLink]="['/whoami']">
+                <span class="page404__body__navigate__cells__icon">
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="inherit">
+                        <path
+                            d="M21 7a.78.78 0 0 0 0-.21.64.64 0 0 0-.05-.17 1.1 1.1 0 0 0-.09-.14.75.75 0 0 0-.14-.17l-.12-.07a.69.69 0 0 0-.19-.1h-.2A.7.7 0 0 0 20 6h-5a1 1 0 0 0 0 2h2.83l-4 4.71-4.32-2.57a1 1 0 0 0-1.28.22l-5 6a1 1 0 0 0 .13 1.41A1 1 0 0 0 4 18a1 1 0 0 0 .77-.36l4.45-5.34 4.27 2.56a1 1 0 0 0 1.27-.21L19 9.7V12a1 1 0 0 0 2 0V7z">
+                        </path>
+                    </svg>
+                </span>
+                <h3>Know me</h3>
+            </div>
+
+            <div class="page404__body__navigate__cells" [routerLink]="['/tags']">
+                <span class="page404__body__navigate__cells__icon">
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="inherit">
+                        <path
+                            d="M12.87 22a1.84 1.84 0 0 1-1.29-.53l-6.41-6.42a1 1 0 0 1-.29-.61L4 5.09a1 1 0 0 1 .29-.8 1 1 0 0 1 .8-.29l9.35.88a1 1 0 0 1 .61.29l6.42 6.41a1.82 1.82 0 0 1 0 2.57l-7.32 7.32a1.82 1.82 0 0 1-1.28.53zm-6-8.11l6 6 7.05-7.05-6-6-7.81-.73z">
+                        </path>
+                        <circle cx="10.5" cy="10.5" r="1.5"></circle>
+                    </svg>
+                </span>
+                <h3>Tags that help</h3>
+            </div>
+        </div>
+    </div>
+</div>

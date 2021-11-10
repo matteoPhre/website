@@ -172,13 +172,20 @@ export class AppComponent implements OnInit {
     // Initiate network call to get the theme if not available locally
     // get the themeList first
 
-    let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (darkMode) {
-      this.__themeService.setTheme('Dark Knight', this.defaultThemes);
-      this.lastThemeSelection = 'Dark Knight';
+    let { _theme, _themeAttrsParsed } = this.__themeService.getStoredTheme();
+
+    if ((_theme != null || _theme != '') && (_themeAttrsParsed != null || _themeAttrsParsed != '')) {
+      this.__themeService.setTheme(_theme as string, [_themeAttrsParsed]);
+      this.lastThemeSelection = _theme;
     } else {
-      this.__themeService.setTheme('Zen White', this.defaultThemes);
-      this.lastThemeSelection = 'Zen White';
+      let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (darkMode) {
+        this.__themeService.setTheme('Dark Knight', this.defaultThemes);
+        this.lastThemeSelection = 'Dark Knight';
+      } else {
+        this.__themeService.setTheme('Zen White', this.defaultThemes);
+        this.lastThemeSelection = 'Zen White';
+      }
     }
 
     this.__themeService.getThemeList().subscribe((themelist: any) => {
@@ -186,24 +193,6 @@ export class AppComponent implements OnInit {
       this.__themeService.getThemeConfigs(themelist).subscribe((observableList: any) => {
 
         this.themeObjList = observableList;
-
-        // INITIATING THEME SWITCHING TASK
-        let userThemePreference = "Dark Knight";
-        // check localStorage for existing theme attributes
-        if (userThemePreference != null || userThemePreference != undefined || userThemePreference == '') {
-          this.__themeService.setTheme(userThemePreference, this.themeObjList);
-          this.lastThemeSelection = userThemePreference;
-        } else {
-          // set the default themes based on browser themes
-          let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (darkMode) {
-            this.__themeService.setTheme('Dark Knight', this.defaultThemes);
-            this.lastThemeSelection = 'Dark Knight';
-          } else {
-            this.__themeService.setTheme('Zen White', this.defaultThemes);
-            this.lastThemeSelection = 'Zen White';
-          }
-        }
       })
 
       for (let theme of themelist) {
