@@ -87,30 +87,7 @@ export class ThemeService {
         // sets the fallback theme
         if (fallBack == true) {
 
-            let fallBackTheme: any = {
-                "$theme": "Zen White",
-
-                "--accent-primary": "#ff1e56",
-
-                "--text-primary": "#444444",
-                "--text-secondary": "#4d4d4d",
-                "--home-heading": "#646464",
-                "--heading-primary": "#3d3d3d",
-                "--heading-secondary": "#444",
-                "--animation-text": "#757575",
-                "--badge-text": "#f8f9fa",
-                "--tags": "#a0a0a0",
-                "--tag-text": "#757575",
-                "--tagcount-bg": "#e6e6e6",
-                "--tagbg-hover": "#ff5e860c",
-
-                "--background": "#fff",
-                "--header-bg": "#f8f9fa",
-                "--subheader-bg": "#fff",
-                "--border": "#d1d1d1",
-                "--icons-social": "#5e5e5e",
-                "--drop-shadow": "#2222224f"
-            }
+            let fallBackTheme: any = themeList.find((theme: any) => theme.$theme === "Zen White")
 
             localStorage.setItem('@theme', fallBackTheme.$theme)
             localStorage.setItem('@themeAccent', fallBackTheme['--accent-primary'])

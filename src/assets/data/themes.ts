@@ -95,5 +95,5 @@ const HackrBleed = {
     "--orb-hue": 90
 }
 
-
+export const defaultThemesList = [ZenWhite, DarkKnigth, HackrBleed]
 export default themes;

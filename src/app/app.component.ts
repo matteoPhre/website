@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-// import { GithubService } from './service/github.service';
 import { Subject, Subscription } from 'rxjs';
 import { ThemeService } from './service/theme.service';
+import Utility from './common/utility';
+import { defaultThemesList } from 'src/assets/data/themes';
 
 @Component({
   selector: 'app-root',
@@ -21,56 +22,7 @@ export class AppComponent implements OnInit {
   themeObjList: any = [];
 
   lastThemeSelection: any;
-  defaultThemes: any = [
-    {
-      "$theme": "Zen White",
-
-      "--accent-primary": "#ff1e56",
-
-      "--text-primary": "#444444",
-      "--text-secondary": "#4d4d4d",
-      "--home-heading": "#646464",
-      "--heading-primary": "#3d3d3d",
-      "--heading-secondary": "#444",
-      "--animation-text": "#757575",
-      "--badge-text": "#f8f9fa",
-      "--tags": "#a0a0a0",
-      "--tag-text": "#757575",
-      "--tagcount-bg": "#e6e6e6",
-      "--tagbg-hover": "#ff5e860c",
-
-      "--background": "#fff",
-      "--header-bg": "#f8f9fa",
-      "--subheader-bg": "#fff",
-      "--border": "#d1d1d1",
-      "--icons-social": "#5e5e5e",
-      "--drop-shadow": "#2222224f"
-    },
-    {
-      "$theme": "Dark Knight",
-
-      "--accent-primary": "#ff1e56",
-
-      "--text-primary": "#dfdbd5",
-      "--text-secondary": "#aca59a",
-      "--home-heading": "#bdb7af",
-      "--heading-primary": "#bdb7af",
-      "--heading-secondary": "#444",
-      "--animation-text": "#9e9689",
-      "--badge-text": "#f8f9fa",
-      "--tags": "#aca59a",
-      "--tag-text": "#9e9689",
-      "--tagcount-bg": "#26292b",
-      "--tagbg-hover": "#ff5e860c",
-
-      "--background": "#181a1b",
-      "--header-bg": "#1b1e1f",
-      "--subheader-bg": "#181a1b",
-      "--border": "#3d4245",
-      "--icons-social": "#ada59b",
-      "--drop-shadow": "#2222224f"
-    }
-  ]
+  defaultThemes: any = defaultThemesList
 
 
   constructor(
@@ -174,7 +126,7 @@ export class AppComponent implements OnInit {
 
     let { _theme, _themeAttrsParsed } = this.__themeService.getStoredTheme();
 
-    if ((_theme != null || _theme != '') && (_themeAttrsParsed != null || _themeAttrsParsed != '')) {
+    if (!(Utility.isNullOrEmptyOrWhitespace(_theme) && Utility.isNullOrEmptyOrWhitespace(_themeAttrsParsed))) {
       this.__themeService.setTheme(_theme as string, [_themeAttrsParsed]);
       this.lastThemeSelection = _theme;
     } else {
