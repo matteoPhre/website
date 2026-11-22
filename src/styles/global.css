@@ -351,14 +351,6 @@ p {
   text-align: center;
 }
 
-.home__banner {
-  width: clamp(120px, 16vmin, 180px);
-  height: auto;
-  user-select: none;
-  pointer-events: none;
-  filter: drop-shadow(1px 1px 1px var(--drop-shadow));
-}
-
 .home__name {
   margin: 1.75rem 0 0.75rem;
   font-family: 'Inter', var(--font-body);
