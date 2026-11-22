@@ -131,6 +131,19 @@ html[data-theme='hackr-bleed'] {
   stroke-linejoin: round;
 }
 
+/* The owl follows the active theme: body lifted for dark backgrounds, accent swapped */
+html[data-theme='dark-knight'] .mio-gufo {
+  --owl-ink: #3a3a5e;
+  --owl-paper: #f7f3e9;
+  --owl-accent: #ff1e56;
+}
+
+html[data-theme='hackr-bleed'] .mio-gufo {
+  --owl-ink: #2a3a4f;
+  --owl-paper: #f5ffe1;
+  --owl-accent: #9fef00;
+}
+
 @font-face {
   font-family: 'Inter-Medium';
   src: url('/fonts/Inter-Medium.ttf') format('truetype');
