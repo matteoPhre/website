@@ -2,7 +2,8 @@
 import Icon from './Icon.astro';
 import { profile } from '../data/profile';
 
-const path = Astro.url.pathname;
+// Static builds generate /about/index.html, so Astro.url.pathname can carry a trailing slash.
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 
 const crumbs: Record<string, string> = {
   '/': 'hello friend',
@@ -33,32 +34,24 @@ const themes = [
       <span class="banner__cursor" aria-hidden="true"></span>
     </div>
 
-    <button
-      class="nav__toggle"
-      type="button"
-      data-nav-toggle
-      aria-label="Toggle navigation"
-      aria-controls="nav-links"
-      aria-expanded="false"
-    >
-      <Icon name="menu" />
-    </button>
+    <div class="nav__right">
+      <ul class="nav__links" id="nav-links" data-nav-links>
+        {
+          links.map((link) => (
+            <li>
+              <a
+                class="nav__link"
+                href={link.href}
+                aria-current={path === link.href ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
 
-    <ul class="nav__links" id="nav-links" data-nav-links>
-      {
-        links.map((link) => (
-          <li>
-            <a
-              class="nav__link"
-              href={link.href}
-              aria-current={path === link.href ? 'page' : undefined}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))
-      }
-      <li class="theme">
+      <div class="theme">
         <button
           class="theme__button"
           type="button"
@@ -86,8 +79,19 @@ const themes = [
             ))
           }
         </ul>
-      </li>
-    </ul>
+      </div>
+    </div>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      data-nav-toggle
+      aria-label="Toggle navigation"
+      aria-controls="nav-links"
+      aria-expanded="false"
+    >
+      <Icon name="menu" />
+    </button>
   </div>
 </nav>
 
