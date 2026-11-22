@@ -374,6 +374,7 @@ p {
   font-size: clamp(1.15rem, 0.9rem + 1vw, 1.5rem);
   font-weight: 400;
   color: var(--home-heading);
+  min-height: 3.2em;
 }
 
 .home__quote hr {
@@ -391,8 +392,12 @@ p {
 }
 
 .scramble {
-  color: var(--accent-primary);
+  color: inherit;
   cursor: help;
+}
+
+.scramble__word {
+  color: var(--accent-primary);
 }
 
 .scramble.is-scrambling {

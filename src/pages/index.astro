@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import { profile } from '../data/profile';
+import { heroPhrases } from '../data/phrases';
 ---
 
 <BaseLayout title="@matteoPhre — home" description="Matteo Selleri — full stack software engineer, security enthusiast and open-source tinkerer.">
@@ -12,19 +13,11 @@ import { profile } from '../data/profile';
 
     <div class="home__quote">
       <h5>
-        You are one{' '}
         <span
           class="scramble"
           data-scramble
-          data-scramble-chars="0123456789"
-          data-scramble-phrases='["constant","sure thing","a given"]'>constant</span
-        >{' '}
-        in a sea of{' '}
-        <span
-          class="scramble"
-          data-scramble
-          data-scramble-chars="abcdefghijklmnopqrstuvwxyz"
-          data-scramble-phrases='["variables","chaos","unknowns"]'>variables</span
+          data-scramble-chars="0123456789abcdefghijklmnopqrstuvwxyz"
+          data-scramble-phrases={JSON.stringify(heroPhrases)}>Less magic, more clarity.</span
         >
       </h5>
       <hr />

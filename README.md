@@ -18,9 +18,9 @@ Pseudonym `matteoPhre` is kept as the site brand; the real name (Matteo Selleri)
 
 ## Text animation
 
-`src/scramble.ts` powers the scramble/hero text. Edit the `data-scramble-phrases` JSON attribute
-on each `[data-scramble]` element in `src/pages/index.astro` (and `404.astro`) to change the
-rotating phrases. Hovering advances to the next phrase immediately; reduced-motion users see a
+`src/scramble.ts` powers the scramble/hero text. Rotating phrases live in `src/data/phrases.ts`.
+Each `[[option|option|option]]` slot cycles through its options one at a time, highlighted in the
+accent colour via `.scramble__word`. Hovering advances immediately; reduced-motion users see a
 static phrase.
 
 ## Theming
