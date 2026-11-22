@@ -5,23 +5,26 @@ const themeOptions = document.querySelectorAll<HTMLButtonElement>('[data-theme-o
 const navToggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
 const navLinks = document.querySelector<HTMLElement>('[data-nav-links]');
 
-function closeThemeMenu() {
+function closeThemeMenu(): void {
   if (!themeMenu || !themeButton) return;
   themeMenu.hidden = true;
   themeButton.setAttribute('aria-expanded', 'false');
 }
 
-function markSelected(theme: string) {
+function closeMobileMenu(): void {
+  navLinks?.classList.remove('is-open');
+  navToggle?.setAttribute('aria-expanded', 'false');
+}
+
+function markSelected(theme: string): void {
   themeOptions.forEach((option) => {
     option.setAttribute('aria-selected', String(option.dataset.themeOption === theme));
   });
 }
 
-const initialTheme = document.documentElement.dataset.theme ?? 'zen-white';
-markSelected(initialTheme);
+markSelected(document.documentElement.dataset.theme ?? 'zen-white');
 
-themeButton?.addEventListener('click', (event) => {
-  event.stopPropagation();
+themeButton?.addEventListener('click', () => {
   if (!themeMenu || !themeButton) return;
   const opening = themeMenu.hidden;
   themeMenu.hidden = !opening;
@@ -43,28 +46,42 @@ themeOptions.forEach((option) => {
   });
 });
 
+navToggle?.addEventListener('click', () => {
+  closeThemeMenu();
+  const open = navLinks?.classList.toggle('is-open') ?? false;
+  navToggle.setAttribute('aria-expanded', String(open));
+});
+
+navLinks?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Close either menu when clicking anywhere else on the page.
 document.addEventListener('click', (event) => {
-  if (!themeMenu?.contains(event.target as Node) && !themeButton?.contains(event.target as Node)) {
+  const target = event.target as Node;
+
+  if (themeMenu && !themeMenu.hidden && !themeMenu.contains(target) && !themeButton?.contains(target)) {
     closeThemeMenu();
+  }
+
+  if (
+    navLinks?.classList.contains('is-open') &&
+    !navLinks.contains(target) &&
+    !navToggle?.contains(target) &&
+    !themeButton?.contains(target)
+  ) {
+    closeMobileMenu();
   }
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     closeThemeMenu();
-    navLinks?.classList.remove('is-open');
-    navToggle?.setAttribute('aria-expanded', 'false');
+    closeMobileMenu();
   }
 });
 
-navToggle?.addEventListener('click', () => {
-  const open = navLinks?.classList.toggle('is-open') ?? false;
-  navToggle.setAttribute('aria-expanded', String(open));
-});
-
-navLinks?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('is-open');
-    navToggle?.setAttribute('aria-expanded', 'false');
-  });
+// Never leave the mobile menu open when growing back to the desktop layout.
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 760) closeMobileMenu();
 });

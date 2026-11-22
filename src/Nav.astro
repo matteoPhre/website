@@ -1,0 +1,100 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
+
+// Static builds generate /about/index.html, so Astro.url.pathname can carry a trailing slash.
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const crumbs: Record<string, string> = {
+  '/': 'hello friend',
+  '/about': 'whoami',
+  '/projects': 'ls projects',
+};
+const crumb = crumbs[path] ?? 'errno 404';
+
+const links = [
+  { href: '/', label: 'cd ~' },
+  { href: '/about', label: 'whoami' },
+  { href: '/projects', label: 'ls projects' },
+];
+
+const themes = [
+  { id: 'zen-white', label: 'Zen White' },
+  { id: 'dark-knight', label: 'Dark Knight' },
+  { id: 'hackr-bleed', label: 'Hackr Bleed' },
+];
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <div class="banner">
+      <Icon name="chevron" class="banner__sign" />
+      <a class="banner__home" href="/">{profile.handle}/</a>
+      <span class="banner__directory">{crumb}</span>
+      <span class="banner__cursor" aria-hidden="true"></span>
+    </div>
+
+    <div class="nav__right">
+      <ul class="nav__links" id="nav-links" data-nav-links>
+        {
+          links.map((link) => (
+            <li>
+              <a
+                class="nav__link"
+                href={link.href}
+                aria-current={path === link.href ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="theme">
+        <button
+          class="theme__button"
+          type="button"
+          data-theme-toggle
+          aria-label="Change theme"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <Icon name="moon" />
+        </button>
+        <ul class="theme__menu" data-theme-menu hidden>
+          {
+            themes.map((theme) => (
+              <li>
+                <button
+                  class="theme__option"
+                  type="button"
+                  data-theme-option={theme.id}
+                  aria-selected="false"
+                >
+                  <Icon name="hash" />
+                  {theme.label}
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      data-nav-toggle
+      aria-label="Toggle navigation"
+      aria-controls="nav-links"
+      aria-expanded="false"
+    >
+      <Icon name="menu" />
+    </button>
+  </div>
+</nav>
+
+<script>
+  import '../nav-script';
+</script>
