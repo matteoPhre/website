@@ -40,7 +40,10 @@ npm run preview   # preview the build
 
 ## Deploy
 
-Firebase Hosting config is included, pointing at `dist/`:
+Live at **https://matteoselleri.web.app** (free Firebase Hosting subdomain; the original
+`personal-website-5f1d6.web.app` URL also still works).
+
+Firebase Hosting config is included, pointing at `dist/` for both sites:
 
 ```sh
 npm run build
