@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Gufo (favicon)</title>
+  <style>
+    /* Favicons don't inherit page CSS variables — fallbacks are set to the owl palette. */
+    .bg     { fill: var(--owl-paper, #f7f3e9); }
+    .ink    { fill: var(--owl-ink, #1b1b2f); }
+    .paper  { fill: var(--owl-paper, #f7f3e9); }
+    .accent { fill: var(--owl-accent, #f2a900); }
+  </style>
+
+  <rect class="bg" width="64" height="64" rx="14"/>
+
+  <!-- head with ear tufts -->
+  <path class="ink" d="M10 8 L23 17 Q32 14 41 17 L54 8 L53 30 Q54 52 32 59 Q10 52 11 30 Z"/>
+
+  <!-- eyes -->
+  <circle class="paper" cx="22" cy="32" r="10"/>
+  <circle class="paper" cx="42" cy="32" r="10"/>
+
+  <!-- pupils -->
+  <circle class="ink" cx="25" cy="37" r="3.5"/>
+  <circle class="ink" cx="45" cy="36" r="3.5"/>
+
+  <!-- angry eyelids -->
+  <path class="ink" d="M11 18 L34 18 L34 34 L11 27 Z"/>
+  <path class="ink" d="M53 18 L30 18 L30 33 L53 24 Z"/>
+
+  <!-- beak -->
+  <path class="accent" d="M29 42 L35 42 L32 50 Z"/>
+</svg>

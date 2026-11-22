@@ -101,6 +101,36 @@ html[data-theme='hackr-bleed'] {
   --nav-height: 64px;
 }
 
+/* Owl palette — override these to restyle the inline SVG from anywhere in the CSS */
+.mio-gufo {
+  --owl-ink: #1b1b2f;
+  --owl-paper: #f7f3e9;
+  --owl-accent: #f2a900;
+}
+
+.mio-gufo .ink { fill: var(--owl-ink); }
+.mio-gufo .paper { fill: var(--owl-paper); }
+.mio-gufo .accent { fill: var(--owl-accent); }
+.mio-gufo .brow {
+  fill: none;
+  stroke: var(--owl-accent);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.mio-gufo .wing {
+  fill: none;
+  stroke: var(--owl-paper);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.mio-gufo .feather {
+  fill: none;
+  stroke: var(--owl-ink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 @font-face {
   font-family: 'Inter-Medium';
   src: url('/fonts/Inter-Medium.ttf') format('truetype');

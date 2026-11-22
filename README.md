@@ -16,6 +16,13 @@ old global JavaScript and duplicated inline SVGs.
 Pseudonym `matteoPhre` is kept as the site brand; the real name (Matteo Selleri) appears on
 `/about`.
 
+## Owl artwork
+
+The homepage owl is inlined via `src/components/Owl.astro` so page CSS can reach its palette.
+Edit `--owl-ink`, `--owl-paper` and `--owl-accent` under `.mio-gufo` in `src/styles/tokens.css`
+to restyle it. The favicon (`public/favicon.svg`) is self-contained — browsers don't pass page
+CSS variables to favicons, so its fallbacks are set to the same palette.
+
 ## Text animation
 
 `src/scramble.ts` powers the scramble/hero text. Rotating phrases live in `src/data/phrases.ts`.

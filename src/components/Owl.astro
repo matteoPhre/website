@@ -1,0 +1,56 @@
+---
+// Inline SVG so the page's CSS variables can reach the owl's palette.
+// Colours live in tokens.css under .mio-gufo.
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+  class:list={['mio-gufo', className]}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  role="img"
+  aria-labelledby="owl-title"
+>
+  <title id="owl-title">A grumpy, slightly smug owl</title>
+
+  <g transform="rotate(-3 100 185)">
+    <!-- feet -->
+    <rect class="accent" x="70" y="178" width="22" height="9" rx="4.5" />
+    <rect class="accent" x="108" y="178" width="22" height="9" rx="4.5" />
+
+    <!-- body + ear tufts -->
+    <path class="ink" d="M44 70 L38 34 L72 52 Q100 44 128 52 L162 34 L156 70 Q168 104 160 140 Q150 182 100 182 Q50 182 40 140 Q32 104 44 70 Z" />
+
+    <!-- wings -->
+    <path class="wing" d="M48 112 Q38 142 56 170" />
+    <path class="wing" d="M152 112 Q162 142 144 170" />
+
+    <!-- belly -->
+    <ellipse class="paper" cx="100" cy="150" rx="30" ry="28" />
+    <path class="feather" d="M82 134 q6 7 12 0 q6 7 12 0 q6 7 12 0" />
+    <path class="feather" d="M76 148 q6 7 12 0 q6 7 12 0 q6 7 12 0 q6 7 12 0" />
+    <path class="feather" d="M82 162 q6 7 12 0 q6 7 12 0 q6 7 12 0" />
+
+    <!-- eyes -->
+    <circle class="paper" cx="72" cy="84" r="24" />
+    <circle class="paper" cx="128" cy="84" r="24" />
+
+    <!-- pupils: a sideways look of mild superiority -->
+    <circle class="ink" cx="82" cy="95" r="8" />
+    <circle class="ink" cx="138" cy="92" r="8" />
+
+    <!-- eyelids: one angry and half-lowered, one eyebrow raised -->
+    <path class="ink" d="M44 56 L100 56 L100 96 L44 80 Z" />
+    <path class="ink" d="M156 56 L100 56 L100 86 L156 70 Z" />
+
+    <!-- eyebrows -->
+    <path class="brow" d="M48 68 L98 84" />
+    <path class="brow" d="M152 58 Q130 50 104 70" />
+
+    <!-- beak -->
+    <path class="accent" d="M90 98 L110 98 L100 118 Z" stroke-linejoin="round" />
+  </g>
+</svg>

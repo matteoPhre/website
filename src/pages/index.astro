@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
+import Owl from '../components/Owl.astro';
 import { profile } from '../data/profile';
 import { heroPhrases } from '../data/phrases';
 ---
 
 <BaseLayout title="@matteoPhre — home" description="Matteo Selleri — full stack software engineer, security enthusiast and open-source tinkerer.">
   <div class="home">
+    <Owl class="home__banner" />
+
     <div class="home__name">
       <span class="atsign">@</span><span>matteo</span><span class="name-accent">Phre</span>
     </div>
