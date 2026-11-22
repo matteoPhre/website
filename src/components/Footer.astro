@@ -1,0 +1,15 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__made">
+      <span>Made with</span>
+      <Icon name="heart" class="footer__heart" title="love" />
+      <span>by {profile.handle}</span>
+    </div>
+    <p>© 2026 <a href="/">{profile.handle}</a> — built with Astro</p>
+  </div>
+</footer>

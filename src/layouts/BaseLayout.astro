@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Matteo Selleri — full stack software engineer. About, projects and notes.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#181a1b" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title}</title>
+
+    <!-- Apply the saved theme before first paint to avoid a flash -->
+    <script is:inline>
+      (() => {
+        try {
+          const saved = localStorage.getItem('@theme');
+          const valid = ['zen-white', 'dark-knight', 'hackr-bleed'];
+          const theme = valid.includes(saved)
+            ? saved
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark-knight'
+              : 'zen-white';
+          document.documentElement.dataset.theme = theme;
+        } catch {
+          document.documentElement.dataset.theme = 'zen-white';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Nav />
+    <main class="main container" id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

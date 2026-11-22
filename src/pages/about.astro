@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { profile } from '../data/profile';
+---
+
+<BaseLayout title="whoami — @matteoPhre" description={`About ${profile.name}, ${profile.role}.`}>
+  <header class="page-head">
+    <div class="page-head__path">~ $ cat about.me</div>
+    <h1>{profile.name}</h1>
+    <p>{profile.role} at {profile.company}</p>
+  </header>
+
+  <section class="section">
+    <h2 class="section__title"><Icon name="user" /> Profile</h2>
+    <div class="prose">
+      <p>{profile.summary}</p>
+      <p>{profile.intro}</p>
+    </div>
+    <div class="facts">
+      <span><Icon name="external" /> {profile.location}</span>
+      <span><Icon name="mail" /> <a href={`mailto:${profile.email}`}>{profile.email}</a></span>
+      <span><Icon name="github" /> <a href={profile.github} target="_blank" rel="noopener noreferrer">github.com/matteoPhre</a></span>
+      <span><Icon name="linkedin" /> <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/matteoselleri</a></span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title"><Icon name="code" /> Skills</h2>
+    <div class="badges">
+      {profile.skills.map((skill) => <span class="badge">{skill}</span>)}
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title"><Icon name="briefcase" /> Experience</h2>
+    <ul class="timeline">
+      {
+        profile.experience.map((job) => (
+          <li class="timeline__item">
+            <h3 class="timeline__role">
+              {job.role}
+              {job.company && <span class="timeline__company"> · {job.company}</span>}
+            </h3>
+            <p class="timeline__meta">
+              {job.period}{job.location ? ` · ${job.location}` : ''}
+            </p>
+            <ul>
+              {job.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title"><Icon name="graduation" /> Education &amp; certifications</h2>
+    <ul class="timeline">
+      {
+        profile.education.map((school) => (
+          <li class="timeline__item">
+            <h3 class="timeline__role">{school.school}</h3>
+            <p class="timeline__meta">{school.degree} · {school.period}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="badges">
+      {profile.certifications.map((cert) => <span class="badge">{cert}</span>)}
+    </div>
+    <div class="facts">
+      {profile.languages.map((lang) => (
+        <span>{lang.name} — {lang.level}</span>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

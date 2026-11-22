@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { projects } from '../data/projects';
+
+const sorted = [...projects].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
+---
+
+<BaseLayout title="ls projects — @matteoPhre" description="Open-source projects by Matteo Selleri.">
+  <header class="page-head">
+    <div class="page-head__path">~ $ ls -la ./projects</div>
+    <h1>Projects</h1>
+    <p>A selection of public repositories — mostly TypeScript libraries and distributed-systems experiments.</p>
+  </header>
+
+  <div class="projects">
+    {
+      sorted.map((project) => (
+        <article class="project">
+          <div class="project__top">
+            <a class="project__name" href={project.url} target="_blank" rel="noopener noreferrer">
+              <Icon name="folder" />
+              {project.name}
+            </a>
+            <span class="project__stars" title={`${project.stars} stars`}>
+              <Icon name="star" /> {project.stars}
+            </span>
+          </div>
+          <p class="project__desc">{project.description}</p>
+          <div class="project__topics">
+            {project.topics.slice(0, 4).map((topic) => (
+              <span class="project__topic">{topic}</span>
+            ))}
+          </div>
+          <div class="project__meta">
+            <span class="project__lang">{project.language}</span>
+            <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} on GitHub`}>
+              view source <Icon name="external" />
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

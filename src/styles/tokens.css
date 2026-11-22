@@ -1,0 +1,108 @@
+/* Theme tokens — ported from the original Angular app (themes.ts) */
+
+:root,
+html[data-theme='zen-white'] {
+  color-scheme: light;
+
+  --accent-primary: #ff1e56;
+
+  --text-primary: #444;
+  --text-secondary: #4d4d4d;
+  --home-heading: #646464;
+  --heading-primary: #3d3d3d;
+  --heading-secondary: #444;
+  --animation-text: #757575;
+  --badge-text: #f8f9fa;
+  --tags: #a0a0a0;
+  --tag-text: #757575;
+  --tagcount-bg: #e6e6e6;
+  --tagbg-hover: #ff5e860c;
+  --tagbg-opaq: #fff7f9;
+
+  --background: #fff;
+  --header-bg: #f8f9fa;
+  --subheader-bg: #fff;
+  --border: #d1d1d1;
+  --icons-social: #5e5e5e;
+  --drop-shadow: #2222224f;
+  --orb-hue: 330;
+
+  --surface: #fff;
+  --surface-alt: #f8f9fa;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme='dark-knight'] {
+  color-scheme: dark;
+
+  --accent-primary: #ff1e56;
+
+  --text-primary: #dfdbd5;
+  --text-secondary: #aca59a;
+  --home-heading: #bdb7af;
+  --heading-primary: #bdb7af;
+  --heading-secondary: #444;
+  --animation-text: #9e9689;
+  --badge-text: #f8f9fa;
+  --tags: #aca59a;
+  --tag-text: #9e9689;
+  --tagcount-bg: #26292b;
+  --tagbg-hover: #ff5e860c;
+  --tagbg-opaq: #231d20;
+
+  --background: #181a1b;
+  --header-bg: #1b1e1f;
+  --subheader-bg: #181a1b;
+  --border: #3d4245;
+  --icons-social: #ada59b;
+  --drop-shadow: #2222224f;
+  --orb-hue: 330;
+
+  --surface: #1b1e1f;
+  --surface-alt: #212527;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme='hackr-bleed'] {
+  color-scheme: dark;
+
+  --accent-primary: #9fef00;
+
+  --text-primary: #fff;
+  --text-secondary: #a4b1cd;
+  --home-heading: #fff;
+  --heading-primary: #fff;
+  --heading-secondary: #a4b1cd;
+  --animation-text: #a4b1cd;
+  --badge-text: #141d2b;
+  --tags: #a4b1cd;
+  --tag-text: #a4b1cd;
+  --tagcount-bg: #ffffff17;
+  --tagbg-hover: #334c2126;
+  --tagbg-opaq: #19242a;
+
+  --background: #141d2b;
+  --header-bg: #111927;
+  --subheader-bg: #111927;
+  --border: #3d4245;
+  --icons-social: #f5ffe1;
+  --drop-shadow: #2222224f;
+  --orb-hue: 90;
+
+  --surface: #111927;
+  --surface-alt: #182231;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+:root {
+  --font-body: 'Inter-Medium', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --max-width: 960px;
+  --nav-height: 64px;
+}
+
+@font-face {
+  font-family: 'Inter-Medium';
+  src: url('/fonts/Inter-Medium.ttf') format('truetype');
+  font-display: swap;
+}

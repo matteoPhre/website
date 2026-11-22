@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { profile } from '../data/profile';
+---
+
+<BaseLayout title="@matteoPhre — home" description="Matteo Selleri — full stack software engineer, security enthusiast and open-source tinkerer.">
+  <div class="home">
+    <img class="home__banner" src="/favicon.png" alt="Spiral logo" width="160" height="160" />
+
+    <div class="home__name">
+      <span class="atsign">@</span><span>matteo</span><span class="name-accent">Phre</span>
+    </div>
+
+    <div class="home__quote">
+      <h5>
+        You are one{' '}
+        <span
+          class="scramble"
+          data-scramble
+          data-scramble-chars="0123456789"
+          data-scramble-phrases='["constant","sure thing","a given"]'>constant</span
+        >{' '}
+        in a sea of{' '}
+        <span
+          class="scramble"
+          data-scramble
+          data-scramble-chars="abcdefghijklmnopqrstuvwxyz"
+          data-scramble-phrases='["variables","chaos","unknowns"]'>variables</span
+        >
+      </h5>
+      <hr />
+      <p>Full Stack Engineer · Portfolio &amp; Open Source</p>
+    </div>
+
+    <div class="home__social">
+      <a href={`mailto:${profile.email}`} data-title="Email" aria-label="Email">
+        <Icon name="mail" />
+      </a>
+      <a href={profile.twitter} target="_blank" rel="noopener noreferrer" data-title="Twitter" aria-label="Twitter">
+        <Icon name="twitter" />
+      </a>
+      <a href={profile.github} target="_blank" rel="noopener noreferrer" data-title="GitHub" aria-label="GitHub">
+        <Icon name="github" />
+      </a>
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" data-title="LinkedIn" aria-label="LinkedIn">
+        <Icon name="linkedin" />
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import '../scramble';
+</script>

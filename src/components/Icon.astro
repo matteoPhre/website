@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+  title?: string;
+}
+
+const { name, class: className = '', title } = Astro.props;
+---
+
+<svg
+  class:list={['icon', className]}
+  role={title ? 'img' : undefined}
+  aria-label={title}
+  aria-hidden={title ? undefined : 'true'}
+>
+  {title && <title>{title}</title>}
+  <use href={`/icons.svg#${name}`}></use>
+</svg>

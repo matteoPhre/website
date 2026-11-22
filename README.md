@@ -1,27 +1,48 @@
-# Website
+# matteoPhre — personal website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+A clean-slate rebuild of the old Angular 11 portfolio in **Astro**. Static output, no framework
+runtime in the browser. Three themes, SVG sprite icons and a text-scramble effect replace the
+old global JavaScript and duplicated inline SVGs.
 
-## Development server
+## Content
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+| Route | Source |
+| --- | --- |
+| `/` | Landing page (`src/pages/index.astro`) |
+| `/about` | CV data in `src/data/profile.ts` (from `Profile.pdf`) |
+| `/projects` | Curated public repos in `src/data/projects.ts` (GitHub API) |
+| 404 | `src/pages/404.astro` |
 
-## Code scaffolding
+Pseudonym `matteoPhre` is kept as the site brand; the real name (Matteo Selleri) appears on
+`/about`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Text animation
 
-## Build
+`src/scramble.ts` powers the scramble/hero text. Edit the `data-scramble-phrases` JSON attribute
+on each `[data-scramble]` element in `src/pages/index.astro` (and `404.astro`) to change the
+rotating phrases. Hovering advances to the next phrase immediately; reduced-motion users see a
+static phrase.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Theming
 
-## Running unit tests
+CSS custom properties in `src/styles/tokens.css` define the three themes ported from the old app:
+`zen-white`, `dark-knight`, `hackr-bleed`. The selected theme is stored in `localStorage` under
+`@theme` and applied before first paint by an inline script in `BaseLayout.astro`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Commands
 
-## Running end-to-end tests
+```sh
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static output in dist/
+npm run preview   # preview the build
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Deploy
 
-## Further help
+Firebase Hosting config is included, pointing at `dist/`:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```sh
+npm run build
+firebase deploy --only hosting
+```

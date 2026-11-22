@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<BaseLayout title="errno 404 — @matteoPhre" description="Page not found.">
+  <div class="notfound">
+    <p class="notfound__code">404</p>
+    <p class="notfound__text">
+      <span
+        class="scramble"
+        data-scramble
+        data-scramble-chars="!<>-_/[]{}—=+*^?#"
+        data-scramble-phrases='["LOST?","404?","WRONG TURN?"]'>LOST?</span
+      >
+    </p>
+    <div class="notfound__links">
+      <a class="notfound__card" href="/"><Icon name="chevron" /> cd ~</a>
+      <a class="notfound__card" href="/about"><Icon name="user" /> whoami</a>
+      <a class="notfound__card" href="/projects"><Icon name="folder" /> ls projects</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import '../scramble';
+</script>
